@@ -6,11 +6,10 @@ export default class Square extends Component {
     }
 
     render() {
-        let { value } = this.props;
+        let { value, position, takeTurn } = this.props;
         return (
-            <div>
-                Square
-                {value}
+            <div onClick={() => takeTurn(position)} className="square">
+                <div className="value">{value}</div>
             </div>
         )
     }
