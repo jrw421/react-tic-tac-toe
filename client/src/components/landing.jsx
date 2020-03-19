@@ -1,4 +1,5 @@
 import React from 'react';
+import Board from './Board.jsx';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -8,10 +9,7 @@ class Landing extends React.Component {
   render() {
     return (
       <div>
-        Hello World
-        <div>
-          <a href="/component">Link to Component</a>
-        </div>
+        <Board/>
       </div>
     );
   }
