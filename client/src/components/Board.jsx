@@ -11,6 +11,14 @@ export default class Board extends Component {
         }
         this.takeTurn = this.takeTurn.bind(this);
         this.checkForWin = this.checkForWin.bind(this);
+        this.resetGame = this.resetGame.bind(this);
+    }
+
+    resetGame() {
+        this.setState({
+            squares: Array(3).fill(null).map(() => new Array(3).fill(null)),
+            numberOfTurns: 0
+        })
     }
 
     // TakeTurn determines the position the player selected and marks the square with the
@@ -76,10 +84,13 @@ export default class Board extends Component {
 
     render() {
         return (
-            <div className="grid">
-                {this.state.squares.flatMap((row, i) => {
-                    return row.map((value, j) => { return <Square value={value} key={Math.random()} takeTurn={this.takeTurn} position={[i, j]}/> }
-                )})}
+            <div>
+                <button onClick={() => this.resetGame()}>Reset Game</button>
+                <div className="grid">
+                    {this.state.squares.flatMap((row, i) => {
+                        return row.map((value, j) => { return <Square value={value} key={Math.random()} takeTurn={this.takeTurn} position={[i, j]}/> }
+                    )})}
+                </div>
             </div>
         )
     }

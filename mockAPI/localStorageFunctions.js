@@ -83,7 +83,6 @@ module.exports = class localStorageAccess {
      * @param {string} player The identity of the player whos turn it now is.
      */
     setScore(player, score) {
-        console.log('player ', player)
         if (player !== "X" && player !== "O" && player !== "Draw") {
             throw Error("Only players X and O may play this game.");   
         }
