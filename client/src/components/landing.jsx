@@ -45,7 +45,7 @@ class Landing extends React.Component {
         <Typography class="rules">
           Rules of the game: <br/>
           1. X's start!<br/>
-          2. You play a round until you win.<br/>
+          2. You play until someone wins.<br/>
           3. A player can win when they have three of their symbol in a row - diagonals count.<br/>
         </Typography>
         <Board incrementWin={this.incrementWin}/>

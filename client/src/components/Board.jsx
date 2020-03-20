@@ -6,7 +6,8 @@ export default class Board extends Component {
         super(props);
         this.state = {
             squares: Array(3).fill(null).map(() => new Array(3).fill(null)),
-            isXturn: true
+            isXturn: true,
+            numberOfTurns: 0
         }
         this.takeTurn = this.takeTurn.bind(this);
         this.checkForWin = this.checkForWin.bind(this);
@@ -27,7 +28,8 @@ export default class Board extends Component {
 
         this.setState({
             squares: updatedSquares,
-            isXturn: !this.state.isXturn
+            isXturn: !this.state.isXturn,
+            numberOfTurns: this.state.numberOfTurns+=1
         }, () => this.checkForWin(positionX, positionY));
     }   
 
@@ -53,11 +55,16 @@ export default class Board extends Component {
 
         if (horizontalWin || verticalWin || diagonalWin) {
             let winner = this.state.squares[positionX][positionY];
-            alert(`${winner}'s won!`)
+            alert(`${winner}'s won!`);
             incrementWin(winner);
             this.setState({
                 squares: Array(3).fill([null, null, null])
-            })
+            });
+        } else if (!horizontalWin && !verticalWin && !diagonalWin && this.state.numberOfTurns === 9) {
+            alert(`It's a tie!`);
+            this.setState({
+                squares: Array(3).fill([null, null, null])
+            });
         }
     }
 
