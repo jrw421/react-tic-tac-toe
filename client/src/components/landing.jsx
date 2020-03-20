@@ -42,6 +42,12 @@ class Landing extends React.Component {
           <Typography class="score" variant="h6">O wins: {this.state.O}</Typography>
           <Typography class="title" variant="h6">Tic Tac Toe</Typography>
         </AppBar><br/>
+        <Typography class="rules">
+          Rules of the game: <br/>
+          1. X's start!<br/>
+          2. You play a round until you win.<br/>
+          3. A player can win when they have three of their symbol in a row - diagonals count.<br/>
+        </Typography>
         <Board incrementWin={this.incrementWin}/>
       </div>
     );
