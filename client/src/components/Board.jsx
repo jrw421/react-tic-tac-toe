@@ -14,11 +14,21 @@ export default class Board extends Component {
         this.resetGame = this.resetGame.bind(this);
     }
 
+    componentDidMount() {
+        this.props.fetch.get('/api/game').then((game) => {
+            this.setState({
+                squares: game
+            })
+        })
+    }
+
     resetGame() {
-        this.setState({
-            squares: Array(3).fill(null).map(() => new Array(3).fill(null)),
-            numberOfTurns: 0
-        });
+        this.props.fetch.delete('/api/game').then(() => {
+            this.setState({
+                squares: Array(3).fill(null).map(() => new Array(3).fill(null)),
+                numberOfTurns: 0
+            });
+        })
     }
 
     // TakeTurn determines the position the player selected and marks the square with the
@@ -33,6 +43,12 @@ export default class Board extends Component {
 
         let updatedSquares = this.state.squares.map(row => row.map(val => { return val }));
         updatedSquares[positionX][positionY] === null ? updatedSquares[positionX][positionY] = move : alert('Square is taken! Please choose a different one.');
+
+        this.props.fetch.post('/api/game', {
+            row: positionX,
+            column: positionY,
+            player: move
+        })
 
         this.setState({
             squares: updatedSquares,
@@ -66,26 +82,31 @@ export default class Board extends Component {
             let winner = squares[positionX][positionY];
             alert(`${winner}'s won!`);
             optionalState ? null : incrementWin(winner);
-            this.setState({
-                squares: Array(3).fill([null, null, null]),
-                numberOfTurns: 0
-            });
+            this.props.fetch.delete('/api/game').then(() => {
+                this.setState({
+                    squares: Array(3).fill([null, null, null]),
+                    numberOfTurns: 0
+                });
+            })
             return true;
         } else if (!horizontalWin && !verticalWin && !diagonalWin && this.state.numberOfTurns === 9) {
             alert(`It's a tie!`);
             incrementWin('Draw');
-            this.setState({
-                squares: Array(3).fill([null, null, null]),
-                numberOfTurns: 0
-            });
+            this.props.fetch.delete('/api/game').then(() => {
+                this.setState({
+                    squares: Array(3).fill([null, null, null]),
+                    numberOfTurns: 0
+                });
+            })
             return false;
         }
     }
 
     render() {
         return (
-            <div>
+            <div class="board">
                 <button className="button" onClick={() => this.resetGame()}>Reset Game</button>
+                <button className="button" onClick={() => this.props.resetScore()}>Reset Score</button>
                 <div className="grid">
                     {this.state.squares.flatMap((row, i) => {
                         return row.map((value, j) => { return <Square value={value} key={Math.random()} takeTurn={this.takeTurn} position={[i, j]}/> }

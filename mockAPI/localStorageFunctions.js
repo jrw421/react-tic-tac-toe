@@ -13,19 +13,27 @@ module.exports = class localStorageAccess {
      */
     initGame() {
         const freshBoard = this.createFreshBoard();
-        this.localStorage.setItem("game", freshBoard);
+        this.localStorage.setItem("game", JSON.stringify(freshBoard));
         return freshBoard;
+    }
+
+    /**
+     * Deletes a game
+     */
+    deleteGame() {
+        this.localStorage.removeItem("game");
     }
 
     /**
      * Retrieves a game state from local storage, initializes one if none exists.
      */
     getGame() {
-        const savedGame = this.localStorage.getItem("game");
+        const savedGame = JSON.parse(this.localStorage.getItem("game"));
         if (savedGame) {
             return savedGame;
         } else {
-            return this.initGame();
+            var initGame = this.initGame();
+            return initGame
         }
     }
 
@@ -44,7 +52,7 @@ module.exports = class localStorageAccess {
             throw Error("Only players X and O may play this game.");
         } else {
             gameState[row][column] = player;
-            this.localStorage.setItem("game", gameState);
+            this.localStorage.setItem("game", JSON.stringify(gameState));
         }
     }
 
@@ -83,6 +91,7 @@ module.exports = class localStorageAccess {
      * @param {string} player The identity of the player whos turn it now is.
      */
     setScore(player, score) {
+        console.log(player)
         if (player !== "X" && player !== "O" && player !== "Draw") {
             throw Error("Only players X and O may play this game.");   
         }

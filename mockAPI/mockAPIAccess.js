@@ -32,4 +32,11 @@ module.exports = class FetchXO {
             reject("404 - The specified endpoint does not exist.")
         })
     }
+
+    delete(endpoint) {
+        return new Promise((resolve, reject) => {
+            if (endpoint === "/api/game") { resolve(this.localStorageAccess.deleteGame()) }
+            reject("404 - The specified endpoint does not exist.")
+        })
+    }
 }

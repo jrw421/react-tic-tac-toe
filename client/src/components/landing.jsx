@@ -14,6 +14,7 @@ class Landing extends React.Component {
     };
     this.incrementWin = this.incrementWin.bind(this);
     this.FetchXO = new FetchXO(localStorage);
+    this.resetScore = this.resetScore.bind(this);
   }
 
   componentDidMount() {
@@ -37,6 +38,29 @@ class Landing extends React.Component {
     .catch(err => console.log('error ', err))
   }
 
+  resetScore() {
+    this.FetchXO.post('/api/score', {
+        player: "X",
+        score: 0
+    }).then(() => {
+        this.FetchXO.post('/api/score', {
+            player: "O",
+            score: 0
+        }).then(() => {
+          this.FetchXO.post('/api/score', {
+            player: "Draw",
+            score: 0
+          }).then(() => {
+            this.setState({
+              X: 0, 
+              O: 0,
+              Draw: 0
+            });
+          })
+        })
+    })
+  }
+
   incrementWin(player) {
     this.setState({
       player: this.state[player]++
@@ -51,23 +75,25 @@ class Landing extends React.Component {
   render() {
     return (
       <div>
-        <AppBar position="static">
-          <div className="wrapper">
-            <div className="score">
-              <Typography class="XState" variant="h6">X wins: {this.state.X}</Typography>
-              <Typography class="state" variant="h6">O wins: {this.state.O}</Typography>
-              <Typography class="state" variant="h6">Draws: {this.state.Draw}</Typography>
+        <div style={{maxHeight: '70%'}}>
+          <AppBar position="static">
+            <div className="wrapper">
+              <div className="score">
+                <Typography class="state" variant="h4">X wins: {this.state.X}</Typography>
+                <Typography class="state" variant="h4">O wins: {this.state.O}</Typography>
+                <Typography class="state" variant="h4">Draws: {this.state.Draw}</Typography>
+              </div>
+              <Typography class="title" variant="h6">Tic Tac Toe</Typography>
             </div>
-            <Typography class="title" variant="h6">Tic Tac Toe</Typography>
-          </div>
-        </AppBar><br/>
+          </AppBar>
+        </div><br/>
         <Typography class="rules">
           Rules of the game: <br/>
           1. X's start!<br/>
           2. You play until someone wins.<br/>
           3. A player can win when they have three of their symbol in a row - diagonals count.<br/>
         </Typography>
-        <Board incrementWin={this.incrementWin}/>
+        <Board resetScore = { this.resetScore } fetch = { this.FetchXO } incrementWin={ this.incrementWin }/>
       </div>
     );
   }
