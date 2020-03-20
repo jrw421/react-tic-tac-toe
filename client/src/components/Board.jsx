@@ -85,7 +85,7 @@ export default class Board extends Component {
     render() {
         return (
             <div>
-                <button onClick={() => this.resetGame()}>Reset Game</button>
+                <button className="button" onClick={() => this.resetGame()}>Reset Game</button>
                 <div className="grid">
                     {this.state.squares.flatMap((row, i) => {
                         return row.map((value, j) => { return <Square value={value} key={Math.random()} takeTurn={this.takeTurn} position={[i, j]}/> }

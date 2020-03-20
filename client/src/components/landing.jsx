@@ -52,10 +52,14 @@ class Landing extends React.Component {
     return (
       <div>
         <AppBar position="static">
-          <Typography class="score" variant="h6">X wins: {this.state.X}</Typography>
-          <Typography class="score" variant="h6">O wins: {this.state.O}</Typography>
-          <Typography class="score" variant="h6">Draws: {this.state.Draw}</Typography>
-          <Typography class="title" variant="h6">Tic Tac Toe</Typography>
+          <div className="wrapper">
+            <div className="score">
+              <Typography class="XState" variant="h6">X wins: {this.state.X}</Typography>
+              <Typography class="state" variant="h6">O wins: {this.state.O}</Typography>
+              <Typography class="state" variant="h6">Draws: {this.state.Draw}</Typography>
+            </div>
+            <Typography class="title" variant="h6">Tic Tac Toe</Typography>
+          </div>
         </AppBar><br/>
         <Typography class="rules">
           Rules of the game: <br/>
