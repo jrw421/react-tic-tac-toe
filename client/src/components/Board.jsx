@@ -5,7 +5,7 @@ export default class Board extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            squares: Array(3).fill([null, null, null]),
+            squares: Array(3).fill(null).map(() => new Array(3).fill(null)),
             isXturn: true
         }
         this.takeTurn = this.takeTurn.bind(this);
@@ -64,3 +64,5 @@ export default class Board extends Component {
         )
     }
 }
+
+module.exports = { checkForWin };

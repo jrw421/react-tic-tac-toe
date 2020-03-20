@@ -1,5 +1,7 @@
 import React from 'react';
 import Board from './Board.jsx';
+import AppBar from '@material-ui/core/AppBar';
+import Typography from '@material-ui/core/Typography';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -29,14 +31,17 @@ class Landing extends React.Component {
 
   saveToLocalStorage() {
     localStorage.setItem('Xwins', this.state.X);
-    localStorage.setItem('Ywins', this.state.O);
+    localStorage.setItem('Owins', this.state.O);
   }
 
   render() {
     return (
       <div>
-        <div>X wins: {this.state.X}</div>
-        <div>O wins: {this.state.O}</div>
+        <AppBar position="static">
+          <Typography class="score" variant="h6">X wins: {this.state.X}</Typography>
+          <Typography class="score" variant="h6">O wins: {this.state.O}</Typography>
+          <Typography class="title" variant="h6">Tic Tac Toe</Typography>
+        </AppBar><br/>
         <Board incrementWin={this.incrementWin}/>
       </div>
     );
