@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1584726164809" clover="3.2.0">
+  <project timestamp="1584726164810" name="All files">
+    <metrics statements="87" coveredstatements="41" conditionals="79" coveredconditionals="19" methods="31" coveredmethods="18" elements="197" coveredelements="78" complexity="0" loc="87" ncloc="87" packages="2" files="5" classes="5"/>
+    <package name="client.src.components">
+      <metrics statements="41" coveredstatements="3" conditionals="47" coveredconditionals="0" methods="13" coveredmethods="2"/>
+      <file name="Board.jsx" path="/Users/jessicawolvington/Desktop/react-tic-tac-toe/client/src/components/Board.jsx">
+        <metrics statements="37" coveredstatements="0" conditionals="47" coveredconditionals="0" methods="10" coveredmethods="0"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="42" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="43" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="44" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="46" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="47" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="48" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="50" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="51" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="53" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="54" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="55" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="57" count="0" type="cond" truecount="0" falsecount="5"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="65" count="0" type="cond" truecount="0" falsecount="6"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+      </file>
+      <file name="Square.jsx" path="/Users/jessicawolvington/Desktop/react-tic-tac-toe/client/src/components/Square.jsx">
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="mockAPI">
+      <metrics statements="46" coveredstatements="38" conditionals="32" coveredconditionals="19" methods="18" coveredmethods="16"/>
+      <file name="MockLocalStorage.js" path="/Users/jessicawolvington/Desktop/react-tic-tac-toe/mockAPI/MockLocalStorage.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="9" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="7" type="stmt"/>
+      </file>
+      <file name="localStorageFunctions.js" path="/Users/jessicawolvington/Desktop/react-tic-tac-toe/mockAPI/localStorageFunctions.js">
+        <metrics statements="25" coveredstatements="18" conditionals="18" coveredconditionals="8" methods="10" coveredmethods="8"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="8" count="9" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="24" count="7" type="stmt"/>
+        <line num="25" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="cond" truecount="2" falsecount="2"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="64" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="74" count="1" type="cond" truecount="2" falsecount="2"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="86" count="1" type="cond" truecount="2" falsecount="2"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+      </file>
+      <file name="mockAPIAccess.js" path="/Users/jessicawolvington/Desktop/react-tic-tac-toe/mockAPI/mockAPIAccess.js">
+        <metrics statements="17" coveredstatements="16" conditionals="14" coveredconditionals="11" methods="5" coveredmethods="5"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="14" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="19" count="6" type="cond" truecount="1" falsecount="1"/>
+        <line num="20" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="6" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="29" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="30" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="31" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="3" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

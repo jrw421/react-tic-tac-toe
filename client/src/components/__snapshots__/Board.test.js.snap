@@ -1,5 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Board component should render renders correctly 1`] = `
+<div
+  className="grid"
+>
+  <div
+    className="square"
+    onClick={[Function]}
+  >
+    <div
+      className="value"
+    />
+  </div>
+  <div
+    className="square"
+    onClick={[Function]}
+  >
+    <div
+      className="value"
+    />
+  </div>
+  <div
+    className="square"
+    onClick={[Function]}
+  >
+    <div
+      className="value"
+    />
+  </div>
+  <div
+    className="square"
+    onClick={[Function]}
+  >
+    <div
+      className="value"
+    />
+  </div>
+  <div
+    className="square"
+    onClick={[Function]}
+  >
+    <div
+      className="value"
+    />
+  </div>
+  <div
+    className="square"
+    onClick={[Function]}
+  >
+    <div
+      className="value"
+    />
+  </div>
+  <div
+    className="square"
+    onClick={[Function]}
+  >
+    <div
+      className="value"
+    />
+  </div>
+  <div
+    className="square"
+    onClick={[Function]}
+  >
+    <div
+      className="value"
+    />
+  </div>
+  <div
+    className="square"
+    onClick={[Function]}
+  >
+    <div
+      className="value"
+    />
+  </div>
+</div>
+`;
+
 exports[`Square component renders the move correctly renders correctly 1`] = `
 <div
   className="square"

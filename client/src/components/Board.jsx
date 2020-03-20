@@ -36,30 +36,33 @@ export default class Board extends Component {
     // Check for win evaluates every possible win a player could have, and is checked after every turn.
     // If a player wins, this data is saved in the parent component and stored in localStorage.
 
-    checkForWin(positionX, positionY) {
+    checkForWin(positionX, positionY, optionalState) {
         let { incrementWin } = this.props;
-        let winHorizontally0 = (this.state.squares[0][0] !== null) && this.state.squares[0][0] === this.state.squares[0][1] &&  this.state.squares[0][1] === this.state.squares[0][2];
-        let winHorizontally1 = (this.state.squares[1][0] !== null) && this.state.squares[1][0] === this.state.squares[1][1] &&  this.state.squares[1][1] === this.state.squares[1][2];
-        let winHorizontally2 = (this.state.squares[2][0] !== null) && this.state.squares[2][0] === this.state.squares[2][1] &&  this.state.squares[2][1] === this.state.squares[2][2];
+        let squares = optionalState ? optionalState : this.state.squares;
+        let winHorizontally0 = (squares[0][0] !== null) && squares[0][0] === squares[0][1] &&  squares[0][1] === squares[0][2];
+        let winHorizontally1 = (squares[1][0] !== null) && squares[1][0] === squares[1][1] &&  squares[1][1] === squares[1][2];
+        let winHorizontally2 = (squares[2][0] !== null) && squares[2][0] === squares[2][1] &&  squares[2][1] === squares[2][2];
 
-        let winVertically0 = (this.state.squares[0][0] !== null) && this.state.squares[0][0] === this.state.squares[1][0] &&  this.state.squares[1][0] === this.state.squares[2][0];
-        let winVertically1 = (this.state.squares[0][1] !== null) && this.state.squares[0][1] === this.state.squares[1][1] &&  this.state.squares[1][1] === this.state.squares[2][1];
-        let winVertically2 = (this.state.squares[0][2] !== null) && this.state.squares[0][2] === this.state.squares[1][2] &&  this.state.squares[1][2] === this.state.squares[2][2];
+        let winVertically0 = (squares[0][0] !== null) && squares[0][0] === squares[1][0] &&  squares[1][0] === squares[2][0];
+        let winVertically1 = (squares[0][1] !== null) && squares[0][1] === squares[1][1] &&  squares[1][1] === squares[2][1];
+        let winVertically2 = (squares[0][2] !== null) && squares[0][2] === squares[1][2] &&  squares[1][2] === squares[2][2];
 
-        let winDiagonally0 = (this.state.squares[0][0] !== null) && this.state.squares[0][0] === this.state.squares[1][1] &&  this.state.squares[1][1] === this.state.squares[2][2];
-        let winDiagonally1 = (this.state.squares[0][2] !== null) && this.state.squares[0][2] === this.state.squares[1][1] &&  this.state.squares[1][1] === this.state.squares[2][0];
+        let winDiagonally0 = (squares[0][0] !== null) && squares[0][0] === squares[1][1] &&  squares[1][1] === squares[2][2];
+        let winDiagonally1 = (squares[0][2] !== null) && squares[0][2] === squares[1][1] &&  squares[1][1] === squares[2][0];
         
         const horizontalWin = winHorizontally1 || winHorizontally2 || winHorizontally0;
         const verticalWin = winVertically1 || winVertically2 || winVertically0;
         const diagonalWin = winDiagonally0 || winDiagonally1;
 
         if (horizontalWin || verticalWin || diagonalWin) {
-            let winner = this.state.squares[positionX][positionY];
+            let winner = squares[positionX][positionY];
             alert(`${winner}'s won!`);
-            incrementWin(winner);
+            optionalState ? null : incrementWin(winner);
             this.setState({
-                squares: Array(3).fill([null, null, null])
+                squares: Array(3).fill([null, null, null]),
+                numberOfTurns: 0
             });
+            return true;
         } else if (!horizontalWin && !verticalWin && !diagonalWin && this.state.numberOfTurns === 9) {
             alert(`It's a tie!`);
             incrementWin('Draw');
@@ -67,6 +70,7 @@ export default class Board extends Component {
                 squares: Array(3).fill([null, null, null]),
                 numberOfTurns: 0
             });
+            return false;
         }
     }
 
