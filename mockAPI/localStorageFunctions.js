@@ -1,20 +1,20 @@
 module.exports = class localStorageAccess {
 
     constructor(localStorage) {
-        this.localStorage = localStorage
+        this.localStorage = localStorage;
     }
 
     createFreshBoard() {
-        return Array(3).fill(null).map(() => new Array(3).fill(null))
+        return Array(3).fill(null).map(() => new Array(3).fill(null));
     }
 
     /**
      * Saves a fresh game state to local storage for later retrieval.
      */
     initGame() {
-        const freshBoard = this.createFreshBoard()
+        const freshBoard = this.createFreshBoard();
         this.localStorage.setItem("game", freshBoard);
-        return freshBoard
+        return freshBoard;
     }
 
     /**
@@ -23,9 +23,9 @@ module.exports = class localStorageAccess {
     getGame() {
         const savedGame = this.localStorage.getItem("game");
         if (savedGame) {
-            return savedGame
+            return savedGame;
         } else {
-            return this.initGame()
+            return this.initGame();
         }
     }
 
@@ -39,12 +39,12 @@ module.exports = class localStorageAccess {
      * @param {string} player The identity of the players - either "X" or "O".
      */
     makeMove(row, column, player) {
-        const gameState = this.getGame()
+        const gameState = this.getGame();
         if (player !== "X" && player !== "O") {
-            throw Error("Only players X and O may play this game.")
+            throw Error("Only players X and O may play this game.");
         } else {
-            gameState[row][column] = player
-            this.localStorage.setItem("game", gameState)
+            gameState[row][column] = player;
+            this.localStorage.setItem("game", gameState);
         }
     }
 
@@ -52,7 +52,7 @@ module.exports = class localStorageAccess {
      * Retrieves the identity of the players who's turn it is currently. Either "X" or "O".
      */
     getTurn() {
-        return this.localStorage.getItem("turn")
+        return this.localStorage.getItem("turn");
     }
 
     /**
@@ -62,19 +62,19 @@ module.exports = class localStorageAccess {
      */
     setTurn(player) {
         if (player !== "X" && player !== "O") {
-            throw Error("Only players X and O may play this game.")
+            throw Error("Only players X and O may play this game.");
         }
-        return this.localStorage.setItem("turn", player)
+        return this.localStorage.setItem("turn", player);
     }
 
     /**
      * Retrieves the score of the specified player.
      */
     getScore(player) {
-        if (player !== "X" && player !== "O") {
-            throw Error("Only players X and O may play this game.")
+        if (player !== "X" && player !== "O" && player !== "Draw") {
+            throw Error("Only players X and O may play this game.");
         }
-        return this.localStorage.getItem(player)
+        return this.localStorage.getItem(player);
     }
 
     /**
@@ -83,9 +83,10 @@ module.exports = class localStorageAccess {
      * @param {string} player The identity of the player whos turn it now is.
      */
     setScore(player, score) {
-        if (player !== "X" && player !== "O") {
-            throw Error("Only players X and O may play this game.")   
+        console.log('player ', player)
+        if (player !== "X" && player !== "O" && player !== "Draw") {
+            throw Error("Only players X and O may play this game.");   
         }
-        return this.localStorage.setItem(player, score)
+        return this.localStorage.setItem(player, score);
     }
 }

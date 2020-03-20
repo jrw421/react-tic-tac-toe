@@ -2,6 +2,7 @@ import React from 'react';
 import Board from './Board.jsx';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
+import FetchXO from '../../../mockAPI/mockAPIAccess.js';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -12,31 +13,39 @@ class Landing extends React.Component {
       Draw: 0
     };
     this.incrementWin = this.incrementWin.bind(this);
-    this.saveToLocalStorage = this.saveToLocalStorage.bind(this);
+    this.FetchXO = new FetchXO(localStorage);
   }
 
   componentDidMount() {
-    let XWins = localStorage.getItem('Xwins');
-    let OWins = localStorage.getItem('Owins');
-    let DrawWins = localStorage.getItem('Drawwins');
+    this.FetchXO.get('/api/score/:X')
+      .then(data => 
+        this.setState({
+          X: data
+      }))
+      .catch(err => console.log('error ', err))
 
-    this.setState({
-      X: XWins,
-      O: OWins,
-      Draw: DrawWins
-    });
+    this.FetchXO.get('/api/score/:O')
+      .then(data => this.setState({
+        O: data
+    }))
+    .catch(err => console.log('error ', err))
+
+    this.FetchXO.get('/api/score/:Draw')
+      .then(data => this.setState({
+        Draw: data
+    }))
+    .catch(err => console.log('error ', err))
   }
 
   incrementWin(player) {
     this.setState({
       player: this.state[player]++
-    }, this.saveToLocalStorage());
-  }
-
-  saveToLocalStorage() {
-    localStorage.setItem('Xwins', this.state.X);
-    localStorage.setItem('Owins', this.state.O);
-    localStorage.setItem('Drawwins', this.state.Draw);
+    }, () => {
+      const payload = { player: player, score: this.state[player]}
+      this.FetchXO.post(`/api/score`, payload)
+      .then(() => console.log('success'))
+      .catch(err => console.log('error ', err))
+    });
   }
 
   render() {
