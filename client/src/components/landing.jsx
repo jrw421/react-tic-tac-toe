@@ -8,7 +8,8 @@ class Landing extends React.Component {
     super(props);
     this.state = {
       X: 0,
-      O: 0
+      O: 0,
+      Draw: 0
     };
     this.incrementWin = this.incrementWin.bind(this);
     this.saveToLocalStorage = this.saveToLocalStorage.bind(this);
@@ -17,9 +18,12 @@ class Landing extends React.Component {
   componentDidMount() {
     let XWins = localStorage.getItem('Xwins');
     let OWins = localStorage.getItem('Owins');
+    let DrawWins = localStorage.getItem('Drawwins');
+
     this.setState({
       X: XWins,
-      O: OWins
+      O: OWins,
+      Draw: DrawWins
     });
   }
 
@@ -32,6 +36,7 @@ class Landing extends React.Component {
   saveToLocalStorage() {
     localStorage.setItem('Xwins', this.state.X);
     localStorage.setItem('Owins', this.state.O);
+    localStorage.setItem('Drawwins', this.state.Draw);
   }
 
   render() {
@@ -40,6 +45,7 @@ class Landing extends React.Component {
         <AppBar position="static">
           <Typography class="score" variant="h6">X wins: {this.state.X}</Typography>
           <Typography class="score" variant="h6">O wins: {this.state.O}</Typography>
+          <Typography class="score" variant="h6">Draws: {this.state.Draw}</Typography>
           <Typography class="title" variant="h6">Tic Tac Toe</Typography>
         </AppBar><br/>
         <Typography class="rules">

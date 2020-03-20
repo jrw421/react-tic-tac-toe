@@ -3,3 +3,4 @@ client/dist/
 !client/dist/index.html
 .idea/
 .DS_Store
+client/src/components/__snapshots__/

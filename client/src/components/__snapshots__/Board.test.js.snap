@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Square component renders the move correctly renders correctly 1`] = `
+<div
+  className="square"
+  onClick={[Function]}
+>
+  <div
+    className="value"
+  >
+    X
+  </div>
+</div>
+`;

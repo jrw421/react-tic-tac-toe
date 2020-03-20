@@ -62,8 +62,10 @@ export default class Board extends Component {
             });
         } else if (!horizontalWin && !verticalWin && !diagonalWin && this.state.numberOfTurns === 9) {
             alert(`It's a tie!`);
+            incrementWin('Draw');
             this.setState({
-                squares: Array(3).fill([null, null, null])
+                squares: Array(3).fill([null, null, null]),
+                numberOfTurns: 0
             });
         }
     }
