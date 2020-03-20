@@ -10,6 +10,7 @@ export default class Square extends Component {
         return (
             <div onClick={() => takeTurn(position)} className="square">
                 <div className="value">{value}</div>
+                <div>{position}</div>
             </div>
         )
     }
