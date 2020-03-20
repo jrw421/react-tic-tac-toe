@@ -18,7 +18,7 @@ export default class Board extends Component {
         this.setState({
             squares: Array(3).fill(null).map(() => new Array(3).fill(null)),
             numberOfTurns: 0
-        })
+        });
     }
 
     // TakeTurn determines the position the player selected and marks the square with the
@@ -32,7 +32,7 @@ export default class Board extends Component {
         let move = isXturn ? 'X' : 'O';
 
         let updatedSquares = this.state.squares.map(row => row.map(val => { return val }));
-        updatedSquares[positionX][positionY] = move;
+        updatedSquares[positionX][positionY] === null ? updatedSquares[positionX][positionY] = move : alert('Square is taken! Please choose a different one.');
 
         this.setState({
             squares: updatedSquares,
