@@ -28,6 +28,7 @@ export default class Board extends Component {
     }   
 
     checkForWin(positionX, positionY) {
+        let { incrementWin } = this.props;
         let winHorizontally0 = (this.state.squares[0][0] !== null) && this.state.squares[0][0] === this.state.squares[0][1] &&  this.state.squares[0][1] === this.state.squares[0][2];
         let winHorizontally1 = (this.state.squares[1][0] !== null) && this.state.squares[1][0] === this.state.squares[1][1] &&  this.state.squares[1][1] === this.state.squares[1][2];
         let winHorizontally2 = (this.state.squares[2][0] !== null) && this.state.squares[2][0] === this.state.squares[2][1] &&  this.state.squares[2][1] === this.state.squares[2][2];
@@ -44,7 +45,9 @@ export default class Board extends Component {
         const diagonalWin = winDiagonally0 || winDiagonally1;
 
         if (horizontalWin || verticalWin || diagonalWin) {
-            alert(`${this.state.squares[positionX][positionY]}'s won!`)
+            let winner = this.state.squares[positionX][positionY];
+            alert(`${winner}'s won!`)
+            incrementWin(winner);
             this.setState({
                 squares: Array(3).fill([null, null, null])
             })
@@ -52,11 +55,10 @@ export default class Board extends Component {
     }
 
     render() {
-        console.log('squares ', this.state.squares, 'turn', this.state.isXturn)
         return (
             <div className="grid">
                 {this.state.squares.flatMap((row, i) => {
-                    return row.map((value, j) => { return <Square value={value} key={j} takeTurn={this.takeTurn} position={[i, j]}/> }
+                    return row.map((value, j) => { return <Square value={value} key={Math.random()} takeTurn={this.takeTurn} position={[i, j]}/> }
                 )})}
             </div>
         )
