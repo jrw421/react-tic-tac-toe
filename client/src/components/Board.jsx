@@ -12,6 +12,10 @@ export default class Board extends Component {
         this.checkForWin = this.checkForWin.bind(this);
     }
 
+    // TakeTurn determines the position the player selected and marks the square with the
+    // player's mark - either X or O. This mark is updated in the game grid, and 
+    // the grid is updated and saved in state. After this update, the game checks for a win.
+
     takeTurn(positions) {
         let positionX = positions[0];
         let positionY = positions[1];
@@ -26,6 +30,9 @@ export default class Board extends Component {
             isXturn: !this.state.isXturn
         }, () => this.checkForWin(positionX, positionY));
     }   
+
+    // Check for win evaluates every possible win a player could have, and is checked after every turn.
+    // If a player wins, this data is saved in the parent component and stored in localStorage.
 
     checkForWin(positionX, positionY) {
         let { incrementWin } = this.props;
@@ -64,5 +71,3 @@ export default class Board extends Component {
         )
     }
 }
-
-module.exports = { checkForWin };
